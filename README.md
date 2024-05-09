@@ -35,6 +35,7 @@ Diante disso, foi solicitado o desenvolvimento de um console que implemente uma 
         <li><a href="#comp_u">  Componentes Utilizados</a></li>
         <li><a href="#movemouse"> Captura de Movimentos do Mouse</a></li>
         <li><a href="#test"> Testes</a></li>
+        <li><a href="#ref"> Referências</a></li>
         </ul>
 </div>
 
@@ -181,4 +182,19 @@ Esta sessão é reservada para demonstração dos testes feitos no projeto
 <p align="center">
   <img src="https://github.com/ZeDaManga01/PBL-01-MI---Sistemas-Digitais/blob/main/docs/GIf%20-%20Empate(Velha).gif" />
 </p>
+
+<div id="resultado"> 
+<h2> Resultado</h2>
+<div align="justify">
+
+<div id="ref"> 
+<h2> Referências </h2>
+<div align="justify">
+  
+DE1-SoC Board. Disponível em: https://www.terasic.com.tw/cgi-bin/page/archive.pl?Language=English&No=836&PartNo=4. Acessado em: 7 de maio de 2024.
+
+Introduction to the ARM Cortex-A9 Processor. Disponível em: https://github.com/fpgacademy/Tutorials/releases/download/v21.1/ARM_intro_intelfpga.pdf. Acessado em: 5 de maio de 2024.
+
+WEISSTEIN, Eric W. Tic-tac-toe. https://mathworld. wolfram. com/, 2002.
+
 

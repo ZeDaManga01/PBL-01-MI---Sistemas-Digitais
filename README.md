@@ -54,7 +54,7 @@ FPGA System-on-Chip (SoC), que combina os mais recentes núcleos incorporados Co
 com lógica programável líder do setor para máxima flexibilidade de projeto.
 
 <p align="center">
-  <img src="https://github.com/ZeDaManga01/PBL-01-MI---Sistemas-Digitais/blob/main/image%20-%20De1-SoC.jpeg" />
+  <img src="https://github.com/ZeDaManga01/PBL-01-MI---Sistemas-Digitais/blob/main/docs/image%20-%20De1-SoC.jpeg" />
 </p>
 
 ### ARM CORTEX A9
@@ -86,7 +86,7 @@ Dispositivo Cyclone V SoC FPGA para fornecer flexibilidade máxima aos usuários
 FPGA para implementar qualquer projeto de sistema.
 
 <p align="center">
-  <img src="https://github.com/ZeDaManga01/PBL-01-MI---Sistemas-Digitais/blob/main/Image.jpeg?raw=true" />
+  <img src="https://github.com/ZeDaManga01/PBL-01-MI---Sistemas-Digitais/blob/main/docs/Image.jpeg" />
 </p>
 
 <div id="comp_u"> 
@@ -113,35 +113,49 @@ Controlador de hub USB2512B.
 
 
 <p align="center">
-  <img src="https://github.com/ZeDaManga01/PBL-01-MI---Sistemas-Digitais/blob/main/Gif%20-%20Transi%C3%A7%C3%A3o%20de%20tela.gif" />
+  <img src="https://github.com/ZeDaManga01/PBL-01-MI---Sistemas-Digitais/blob/main/docs/Gif%20-%20Transi%C3%A7%C3%A3o%20de%20tela.gif" />
 </p>
 
   <h4 align="center"> Encerramento </h4>
 
 
 <p align="center">
-  <img src="https://github.com/ZeDaManga01/PBL-01-MI---Sistemas-Digitais/blob/main/Gif%20-%20Encerramento.gif" />
+  <img src="https://github.com/ZeDaManga01/PBL-01-MI---Sistemas-Digitais/blob/main/docs/Gif%20-%20Encerramento.gif" />
 </p>
 
   <h4 align="center"> Movimentação do Cursor </h4>
 
 
 <p align="center">
-  <img src="https://github.com/ZeDaManga01/PBL-01-MI---Sistemas-Digitais/blob/main/Gif%20-%20Movimenta%C3%A7%C3%A3o%20do%20%20Cursor.gif" />
+  <img src="https://github.com/ZeDaManga01/PBL-01-MI---Sistemas-Digitais/blob/main/docs/Gif%20-%20Movimenta%C3%A7%C3%A3o%20do%20%20Cursor.gif" />
+</p>
+
+</p>
+ <h4 align="center"> Jogada em Quedrante Livre </h4>
+
+<p align="center">
+  <img src="https://github.com/ZeDaManga01/PBL-01-MI---Sistemas-Digitais/blob/main/docs/Gif%20-%20Jogada%20em%20Quadrante%20Livre.gif" />
 </p>
 
 
   <h4 align="center"> Jogada em Quadrante Ocupado </h4>
 
 
+
 <p align="center">
-  <img src="https://github.com/ZeDaManga01/PBL-01-MI---Sistemas-Digitais/blob/main/Gif%20-%20Jogada%20em%20quadrante%20ocupado.gif" />
-</p>
+  <img src="https://github.com/ZeDaManga01/PBL-01-MI---Sistemas-Digitais/blob/main/docs/Gif%20-%20Vit%C3%B3ria.gif" />
+
 
  <h4 align="center"> Vitória </h4>
 
 
 <p align="center">
-  <img src="https://github.com/ZeDaManga01/PBL-01-MI---Sistemas-Digitais/blob/main/Gif%20-%20Vit%C3%B3ria.gif" />
+  <img src="https://github.com/ZeDaManga01/PBL-01-MI---Sistemas-Digitais/blob/main/docs/Gif%20-%20Vit%C3%B3ria.gif" />
+</p>
+ <h4 align="center"> Empate(Velha) </h4>
+
+
+<p align="center">
+  <img src="https://github.com/ZeDaManga01/PBL-01-MI---Sistemas-Digitais/blob/main/docs/GIf%20-%20Empate(Velha).gif" />
 </p>
 

@@ -223,11 +223,14 @@ Conclusão
 <div id="makefile"> 
 <h2> Instruções para executar o programa</h2>
 <div align="justify">
-  Abrindo o diretório /game no terminal em um ambiente GNU/Linux, preferencialmente no kit de desenvolvimento DE1-SoC, execute as instruções:
+
+Abrindo o diretório /game no terminal em um ambiente GNU/Linux, preferencialmente no kit de desenvolvimento DE1-SoC, execute as instruções:
+
 ```
 make
 sudo ./ttt
-``
+```
+
 Os arquivos gerados serão automaticamente removidos após a execução do comando `make`. Apenas o executável será mantido.
 
 <div id="ref"> 

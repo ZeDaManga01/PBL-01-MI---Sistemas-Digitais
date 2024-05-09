@@ -3,7 +3,7 @@
 
 
 
-## Contexto do projeto
+## Contexto do Projeto
 Dentre os jogos clássicos que resistem ao teste do tempo, o Jogo da Velha continua a cativar mentes e estimular estratégias. Esta simples e elegante competição, também conhecida como jogo do "Galo" em algumas regiões, é um verdadeiro marco da lógica e da diversão. No entanto, o jogo da velha não ficou imune ao avanço tecnológico. Nos tempos atuais, encontramos versões digitais que ampliam ainda mais a acessibilidade e a experiência do jogo. Aplicativos para smartphones e versões online têm revitalizado este jogo clássico, trazendo-o para uma nova geração de jogadores
 
 Diante disso, foi solicitado o desenvolvimento de um console que implemente uma versão do jogo da velha. O jogo deve ser executado em uma interface em modo texto, que possa ser visualizada via terminal. O jogo deve permitir a interação de dois jogadores, de forma que a escolha da posição de marcação no tabuleiro em cada jogada deve ser captada por um mouse conectado a uma das portas USB existentes no Kit de desenvolvimento DE1-SoC. Para acessar e controlar o jogo o usuário pode utilizar os botões e chaves disponíveis na placa. Os LEDs e displays 7-segmentos também podem ser utilizados para representação de outras informações, caso necessário.
@@ -27,8 +27,8 @@ Diante disso, foi solicitado o desenvolvimento de um console que implemente uma 
 <div id="sumario">
         <ul>
         <li><a href="#sft_ut"> Softwares Utilizados </a></li>
-        <li><a href="#kit_placa"> Kit de desenvolvimento DE1-SoC</a></li>
-        <li><a href="#comp_u">  Componentes utilizados</a></li>
+        <li><a href="#kit_placa"> Kit de Desenvolvimento DE1-SoC</a></li>
+        <li><a href="#comp_u">  Componentes Utilizados</a></li>
         <li><a href="#test"> Testes</a></li>
         </ul>
 </div>
@@ -46,7 +46,7 @@ O Visual Studio Code (VS Code) é uma ferramenta popular e altamente funcional u
 A linguagem C é amplamente utilizada em projetos devido à sua eficiência e versatilidade. Com sua sintaxe direta e controle próximo sobre o hardware, o C permite desenvolver programas robustos e rápidos, especialmente em sistemas embarcados, drivers de dispositivos e software de baixo nível. No contexto deste projeto, a utilização da linguagem C foi um dos requisitos necessarios a serem cumpridos.
 
 <div id="kit_placa"> 
-<h2> Kit de desenvolvimento DE1-SoC</h2>
+<h2> Kit de Desenvolvimento DE1-SoC</h2>
 <div align="justify">
 
 O kit de desenvolvimento DE1-SoC apresenta uma plataforma robusta de design de hardware construída em torno do Altera
@@ -90,7 +90,7 @@ FPGA para implementar qualquer projeto de sistema.
 </p>
 
 <div id="comp_u"> 
-<h2> Componentes utilizados</h2>
+<h2> Componentes Utilizados</h2>
 <div align="justify">
 
 ### Gigabit Ethernet
@@ -108,6 +108,10 @@ Controlador de hub USB2512B.
 <div id="test"> 
 <h2> Testes</h2>
 <div align="justify">
+
+
+Esta sessão é reservada para demonstração dos testes feitos no projeto
+
 
   <h4 align="center"> Transição de Tela </h4>
 
@@ -131,7 +135,7 @@ Controlador de hub USB2512B.
 </p>
 
 </p>
- <h4 align="center"> Jogada em Quedrante Livre </h4>
+ <h4 align="center"> Jogada em Quadrante Livre </h4>
 
 <p align="center">
   <img src="https://github.com/ZeDaManga01/PBL-01-MI---Sistemas-Digitais/blob/main/docs/Gif%20-%20Jogada%20em%20Quadrante%20Livre.gif" />

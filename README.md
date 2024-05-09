@@ -8,7 +8,34 @@ Dentre os jogos clássicos que resistem ao teste do tempo, o Jogo da Velha conti
 
 Diante disso, foi solicitado o desenvolvimento de um console que implemente uma versão do jogo da velha. O jogo deve ser executado em uma interface em modo texto, que possa ser visualizada via terminal. O jogo deve permitir a interação de dois jogadores, de forma que a escolha da posição de marcação no tabuleiro em cada jogada deve ser captada por um mouse conectado a uma das portas USB existentes no Kit de desenvolvimento DE1-SoC. Para acessar e controlar o jogo o usuário pode utilizar os botões e chaves disponíveis na placa. Os LEDs e displays 7-segmentos também podem ser utilizados para representação de outras informações, caso necessário.
 
-## Softwares Utilizados
+
+## Requisitos
+
+- O código deve ser escrito em linguagem C;
+
+- O sistema só poderá utilizar os componentes disponíveis na placa.
+
+## Equipe
+
+<uL>
+  <li><a href="https://github.com/pierremachado">Pierre Machado</a></li>
+  <li><a href="https://github.com/kevincorges">Kevin Borges</a></li>
+  <li><a href="https://github.com/ZeDaManga01">José Alberto</a></li>
+</ul>
+
+<h1 align="center"> Sumário </h1>
+<div id="sumario">
+        <ul>
+        <li><a href="#sft_ut"> Softwares Utilizados </a></li>
+        <li><a href="#kit_placa"> Kit de desenvolvimento DE1-SoC</a></li>
+        <li><a href="#comp_u">  Componentes utilizados</a></li>
+        <li><a href="#test"> Testes</a></li>
+        </ul>
+</div>
+
+<div id="sft_ut"> 
+<h2> Softwares Utilizados</h2>
+<div align="justify">
 
 ### VS Code
 
@@ -18,17 +45,17 @@ O Visual Studio Code (VS Code) é uma ferramenta popular e altamente funcional u
 
 A linguagem C é amplamente utilizada em projetos devido à sua eficiência e versatilidade. Com sua sintaxe direta e controle próximo sobre o hardware, o C permite desenvolver programas robustos e rápidos, especialmente em sistemas embarcados, drivers de dispositivos e software de baixo nível. No contexto deste projeto, a utilização da linguagem C foi um dos requisitos necessarios a serem cumpridos.
 
-## Requisitos
-
-- O código deve ser escrito em linguagem C;
-
-- O sistema só poderá utilizar os componentes disponíveis na placa.
-
-## Kit de desenvolvimento DE1-SoC
+<div id="kit_placa"> 
+<h2> Kit de desenvolvimento DE1-SoC</h2>
+<div align="justify">
 
 O kit de desenvolvimento DE1-SoC apresenta uma plataforma robusta de design de hardware construída em torno do Altera
 FPGA System-on-Chip (SoC), que combina os mais recentes núcleos incorporados Cortex-A9 dual-core
 com lógica programável líder do setor para máxima flexibilidade de projeto.
+
+<p align="center">
+  <img src="https://github.com/ZeDaManga01/PBL-01-MI---Sistemas-Digitais/blob/main/image%20-%20De1-SoC.jpeg" />
+</p>
 
 ### ARM CORTEX A9
 
@@ -62,7 +89,9 @@ FPGA para implementar qualquer projeto de sistema.
   <img src="https://github.com/ZeDaManga01/PBL-01-MI---Sistemas-Digitais/blob/main/Image.jpeg?raw=true" />
 </p>
 
-## Componentes utilizados
+<div id="comp_u"> 
+<h2> Componentes utilizados</h2>
+<div align="justify">
 
 ### Gigabit Ethernet
  
@@ -76,7 +105,9 @@ A placa possui duas portas USB 2.0 tipo A com um controlador SMSC USB3300 e um h
 controlador. O dispositivo SMSC USB3300 em pacote QFN de 32 pinos faz interface com o SMSC
 Controlador de hub USB2512B.
 
-## Testes
+<div id="test"> 
+<h2> Testes</h2>
+<div align="justify">
 
   <h4 align="center"> Transição de Tela </h4>
 

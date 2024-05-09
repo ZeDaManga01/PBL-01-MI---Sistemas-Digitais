@@ -29,6 +29,7 @@ Diante disso, foi solicitado o desenvolvimento de um console que implemente uma 
         <li><a href="#sft_ut"> Softwares Utilizados </a></li>
         <li><a href="#kit_placa"> Kit de Desenvolvimento DE1-SoC</a></li>
         <li><a href="#comp_u">  Componentes Utilizados</a></li>
+        <li><a href="#movemouse"> Captura de Movimentos do Mouse</a></li>
         <li><a href="#test"> Testes</a></li>
         </ul>
 </div>
@@ -104,6 +105,20 @@ O transceptor Ethernet também suporta interface RGMII MAC.
 A placa possui duas portas USB 2.0 tipo A com um controlador SMSC USB3300 e um hub de 2 portas
 controlador. O dispositivo SMSC USB3300 em pacote QFN de 32 pinos faz interface com o SMSC
 Controlador de hub USB2512B.
+
+<div id="movemouse"> 
+<h2> Captura de Movimentos do Mouse </h2>
+<div align="justify">
+
+- Para salvar as informações do mouse, foi utilizado uma struct dedicada para registrar as seguintes informações: Deslocamento para o Eixo X,  Deslocamento para o Eixo Y e Pressionamento dos Botões.
+
+- Foi criada uma struct para armazenar as informações do cursor criado(Posição X e Y e o Caractere usado para representar o cursor)
+
+-  Para movimentar o cursor foi aplicado o deslocamento do mouse para posição X e Y do cursor caso algum movimento tenha sido registrado
+
+- Foi criada uma matriz para guardar o caractere que o cursor estaria sobrepondo e outra para sua cor, para que fosse possível colocar o caractere na sua posição antiga onde o cursor estava sobrepondo e após isso mover o cursor para sua posição atualizada. Eliminando assim a necessidade de imprimir o tabuleiro inteiro a cada movimento do mouse.
+
+
 
 <div id="test"> 
 <h2> Testes</h2>

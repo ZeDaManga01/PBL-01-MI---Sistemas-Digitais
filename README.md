@@ -11,6 +11,10 @@ Diante disso, foi solicitado o desenvolvimento de um console que implemente uma 
 
 ## Requisitos
 
+- O jogo deve permitir a interação de dois jogadores, de forma que a escolha da posição de marcação no tabuleiro em cada jogada (assim como a confirmação da jogada) deva ser captada por um mouse conectado a uma das portas USB existentes no Kit de desenvolvimento DE1-SoC.
+
+- O problema a ser desenvolvido no Kit de desenvolvimento DE1-SoC
+
 - O código deve ser escrito em linguagem C;
 
 - O sistema só poderá utilizar os componentes disponíveis na placa.

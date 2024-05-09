@@ -34,7 +34,11 @@ Diante disso, foi solicitado o desenvolvimento de um console que implemente uma 
         <li><a href="#kit_placa"> Kit de Desenvolvimento DE1-SoC</a></li>
         <li><a href="#comp_u">  Componentes Utilizados</a></li>
         <li><a href="#movemouse"> Captura de Movimentos do Mouse</a></li>
+        <li><a href="#gamerules"> Funcionamento do jogo</a></li>
         <li><a href="#test"> Testes</a></li>
+        <li><a href="#resultado"> Resultados alcançados</a></li>
+        <li><a href="#conclusion"> Conclusão</a></li>
+        <li><a href="#makefile"> Instruções de execução</a></li>
         <li><a href="#ref"> Referências</a></li>
         </ul>
 </div>
@@ -139,6 +143,11 @@ Portanto, a implementação se deu da seguinte forma:
 - Primeiro, o cursor é inicializado no centro da tela. Em seguida, o seu movimento é calculado somando a posição horizontal do mouse com o seu deslocamento horizontal e subtraindo a posição vertical pelo deslocamento vertical, porque o eixo vertical do terminal é invertido em relação ao eixo do deslocamento y do mouse.
 - Foram criadas duas matrizes: uma para guardar o caractere que o cursor estaria sobrepondo e outra para sua cor, para que fosse possível colocar o caractere na sua posição antiga onde o cursor estava sobrepondo. Após isso, o cursor é posto em sua posição atualizada, eliminando assim a necessidade de imprimir o tabuleiro inteiro a cada movimento do mouse. Sem essas matrizes, o rastro do cursor permaneceria na tela, dificultando a visualização dos itens na tela.
 
+<div id="gamerules"> 
+<h2> Funcionamento do jogo </h2>
+<div align="justify">
+
+Funcionamento
 
 
 <div id="test"> 
@@ -200,8 +209,26 @@ Esta sessão é reservada para demonstração dos testes feitos no projeto.
 </p>
 
 <div id="resultado"> 
-<h2> Resultado</h2>
+<h2> Resultados alcançados</h2>
 <div align="justify">
+
+Resultados
+
+<div id="conclusion"> 
+<h2> Conclusão</h2>
+<div align="justify">
+
+Conclusão
+
+<div id="makefile"> 
+<h2> Instruções para executar o programa</h2>
+<div align="justify">
+  Abrindo o diretório /game no terminal em um ambiente GNU/Linux, preferencialmente no kit de desenvolvimento DE1-SoC, execute as instruções:
+```
+make
+sudo ./ttt
+``
+Os arquivos gerados serão automaticamente removidos após a execução do comando `make`. Apenas o executável será mantido.
 
 <div id="ref"> 
 <h2> Referências </h2>

@@ -11,11 +11,11 @@ Diante disso, foi solicitado o desenvolvimento de um console que implemente uma 
 
 ## Requisitos
 
-- O jogo deve permitir a interação de dois jogadores, de forma que a escolha da posição de marcação no tabuleiro em cada jogada (assim como a confirmação da jogada) deva ser captada por um mouse conectado a uma das portas USB existentes no Kit de desenvolvimento DE1-SoC.
+- É necessário que o problema seja implementado no Kit de desenvolvimento DE1-SoC.
 
-- O problema a ser desenvolvido no Kit de desenvolvimento DE1-SoC
+- O jogo deve permitir a interação de dois jogadores, de forma que a escolha da posição de marcação no tabuleiro em cada jogada (assim como a confirmação da jogada) deve ser capturada por um mouse conectado a uma das portas USB existentes no Kit de desenvolvimento DE1-SoC.
 
-- O código deve ser escrito em linguagem C;
+- O código deve ser escrito em linguagem C.
 
 - O sistema só poderá utilizar os componentes disponíveis na placa.
 
@@ -42,6 +42,10 @@ Diante disso, foi solicitado o desenvolvimento de um console que implemente uma 
 <div id="sft_ut"> 
 <h2> Softwares Utilizados</h2>
 <div align="justify">
+
+### GNU/Linux
+
+Por fim, o kit de desenvolvimento DE1-SoC possui uma distribuição do Linux embarcado instalada, possibilitando a comunicação com a placa com o kit bem como a execução dos códigos criados através de conexão remota. Isso oferece uma gama de possibilidades para a elaboração do problema: a disposição dos diretórios do sistema e a possibilidade de compilar e códigos na linguagem de programação requisitada de forma fácil com o compilador gcc embarcado no kit de desenvolvimento foram fundamentais.
 
 ### VS Code
 
@@ -77,7 +81,7 @@ Program Counter R15. O registrador R15 tem o endereço da próxima instrução q
 executada. Os registradores R13 e R14, são usados convencionalmente como ponteiro de
 pilha Stack Pointer, que contém o endereço atual do elemento superior da pilha e registrador
 de link Link Register, que recebe o endereço de retorno em chamadas de procedimento,
-respectivamente
+respectivamente.
 
 ### Memória
 
@@ -114,14 +118,26 @@ Controlador de hub USB2512B.
 <div id="movemouse"> 
 <h2> Captura de Movimentos do Mouse </h2>
 <div align="justify">
+A implementação de código que utilize os movimentos de um mouse conectado a uma das portas USB 2.0 presentes na DE1-SoC foi, também, um dos requisitos propostos do problema. Assim, a captura dos eventos do mouse se deu por ler as informações armazenadas pelo arquivo mice no diretório /dev/input/, onde cada evento relacionado ao dispositivo é armazenado em uma FIFO (First In, First Out). As informações dos eventos do mouse no arquivo são lidas de forma não bloqueante, ou seja, o fluxo do jogo não é interrompido quando nenhum movimento do mouse é detectado.
 
-- Para salvar as informações do mouse, foi utilizado uma struct dedicada para registrar as seguintes informações: Deslocamento para o Eixo X,  Deslocamento para o Eixo Y e Pressionamento dos Botões.
+De acordo com a documentação do GNU/Linux, cada evento é registrado em uma struct contendo variáveis que guardam informações como a data e hora do evento, tipo, código e valor. A struct de data/hora ocupa 16 bytes no espaço de memória, e as variáveis de tipo, código e valor ocupam 8 bytes juntas. Como apenas os três últimos dados foram relevantes para a implementação do mouse, apenas estes foram lidos.
 
-- Foi criada uma struct para armazenar as informações do cursor criado(Posição X e Y e o Caractere usado para representar o cursor)
+A struct guarda o valor do deslocamento horizontal ou vertical em um espaço de tempo específico, e quais dos botões foram pressionados. Entretanto, os eventos não são simultâneos, sendo armazenados um de cada vez. Logo, em cada leitura do arquivo, algumas informações podem ser perdidas se não manuseadas de forma correta. Além disso, a posição atual do mouse também não é calculada, sendo apenas guardados o deslocamento dos eixos:
 
--  Para movimentar o cursor foi aplicado o deslocamento do mouse para posição X e Y do cursor caso algum movimento tenha sido registrado
+<p align="center">
+  <img src="https://github.com/ZeDaManga01/PBL-01-MI---Sistemas-Digitais/blob/main/docs/mouse_usb.png" />
+</p>
 
-- Foi criada uma matriz para guardar o caractere que o cursor estaria sobrepondo e outra para sua cor, para que fosse possível colocar o caractere na sua posição antiga onde o cursor estava sobrepondo e após isso mover o cursor para sua posição atualizada. Eliminando assim a necessidade de imprimir o tabuleiro inteiro a cada movimento do mouse.
+- Caso o mouse se mova para cima, o deslocamento é positivo do eixo y.
+- Por outro lado, caso se mova para baixo, o deslocamento é negativo do eixo y.
+- Similarmente, o deslocamento é positivo do eixo x para a direita e negativo para a esquerda.
+
+Portanto, a implementação se deu da seguinte forma:
+
+- Para salvar as informações do mouse, uma struct dedicada foi implementada para registrar as informações do file descriptor do /dev/input/mice, um vetor auxiliar usado como buffer, deslocamento para o eixo x, deslocamento para o eixo y e pressionamento dos botões (quais dos botões foram pressionados, quais foram soltos e os seus estados anteriores, a fim de comparação). Os bytes são lidos com o auxílio das bibliotecas unistd e fcntl, e são manipulados dentro do próprio código.
+- Também foi criada uma struct para armazenar as informações do cursor, como a posição x e y e o caractere usado para representar o cursor. É importante salientar que o mouse e o cursor são elementos distintos – o mouse é o dispositivo físico, enquanto o cursor é a sua representação gráfica na tela.
+- Primeiro, o cursor é inicializado no centro da tela. Em seguida, o seu movimento é calculado somando a posição horizontal do mouse com o seu deslocamento horizontal e subtraindo a posição vertical pelo deslocamento vertical, porque o eixo vertical do terminal é invertido em relação ao eixo do deslocamento y do mouse.
+- Foram criadas duas matrizes: uma para guardar o caractere que o cursor estaria sobrepondo e outra para sua cor, para que fosse possível colocar o caractere na sua posição antiga onde o cursor estava sobrepondo. Após isso, o cursor é posto em sua posição atualizada, eliminando assim a necessidade de imprimir o tabuleiro inteiro a cada movimento do mouse. Sem essas matrizes, o rastro do cursor permaneceria na tela, dificultando a visualização dos itens na tela.
 
 
 
@@ -130,7 +146,7 @@ Controlador de hub USB2512B.
 <div align="justify">
 
 
-Esta sessão é reservada para demonstração dos testes feitos no projeto
+Esta sessão é reservada para demonstração dos testes feitos no projeto.
 
 
   <h4 align="center"> Transição de Tela </h4>
@@ -194,6 +210,8 @@ Esta sessão é reservada para demonstração dos testes feitos no projeto
 DE1-SoC Board. Disponível em: https://www.terasic.com.tw/cgi-bin/page/archive.pl?Language=English&No=836&PartNo=4. Acessado em: 7 de maio de 2024.
 
 Introduction to the ARM Cortex-A9 Processor. Disponível em: https://github.com/fpgacademy/Tutorials/releases/download/v21.1/ARM_intro_intelfpga.pdf. Acessado em: 5 de maio de 2024.
+
+Linux Input drivers v1.0. Disponível em: https://www.kernel.org/doc/Documentation/input/input.txt.
 
 WEISSTEIN, Eric W. Tic-tac-toe. https://mathworld. wolfram. com/, 2002.
 

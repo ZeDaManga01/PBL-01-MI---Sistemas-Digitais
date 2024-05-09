@@ -1,4 +1,7 @@
-# Tic-Tac-Toe
+
+<h1 align="center"> Tic-Tac-Toe </h1>
+
+
 
 ## Contexto do projeto
 Dentre os jogos clássicos que resistem ao teste do tempo, o Jogo da Velha continua a cativar mentes e estimular estratégias. Esta simples e elegante competição, também conhecida como jogo do "Galo" em algumas regiões, é um verdadeiro marco da lógica e da diversão. No entanto, o jogo da velha não ficou imune ao avanço tecnológico. Nos tempos atuais, encontramos versões digitais que ampliam ainda mais a acessibilidade e a experiência do jogo. Aplicativos para smartphones e versões online têm revitalizado este jogo clássico, trazendo-o para uma nova geração de jogadores
@@ -29,13 +32,38 @@ pilha Stack Pointer, que contém o endereço atual do elemento superior da pilha
 de link Link Register, que recebe o endereço de retorno em chamadas de procedimento,
 respectivamente
 
-### Diagrama de Blocos da DE1-SoC
-
-![Texto Alternativo]()
+### Memória
 
 A placa suporta 1GB de SDRAM DDR3, compreendendo dois dispositivos DDR3 de 16 bits cada no lado do HPS.
 Os sinais estão conectados ao Controlador de Memória Dedicado para os bancos de I/O do HPS
 e a velocidade alvo é de 400 MHz.
 
-### Comunicação
+### Diagrama de Blocos da DE1-SoC
+
+Todas as conexões são estabelecidas através do
+Dispositivo Cyclone V SoC FPGA para fornecer flexibilidade máxima aos usuários. Os usuários podem configurar o
+FPGA para implementar qualquer projeto de sistema.
+
+<p align="center">
+  <img src="https://github.com/ZeDaManga01/PBL-01-MI---Sistemas-Digitais/blob/main/Image.jpeg?raw=true" />
+</p>
+
+## Componentes utilizados
+
+### Gigabit Ethernet
+ 
+A placa suporta transferência Gigabit Ethernet por um chip externo Micrel KSZ9021RN PHY e
+Função HPS Ethernet MAC. O chip KSZ9021RN com Gigabit 10/100/1000 Mbps integrado
+O transceptor Ethernet também suporta interface RGMII MAC.
+
+### Portas USB 2.0
+
+A placa possui duas portas USB 2.0 tipo A com um controlador SMSC USB3300 e um hub de 2 portas
+controlador. O dispositivo SMSC USB3300 em pacote QFN de 32 pinos faz interface com o SMSC
+Controlador de hub USB2512B.
+
+## Testes
+
+
+
 

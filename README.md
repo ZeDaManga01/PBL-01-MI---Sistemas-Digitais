@@ -122,9 +122,10 @@ Controlador de hub USB2512B.
 <div id="movemouse"> 
 <h2> Captura de Movimentos do Mouse </h2>
 <div align="justify">
-A implementação de código que utilize os movimentos de um mouse conectado a uma das portas USB 2.0 presentes na DE1-SoC foi, também, um dos requisitos propostos do problema. Assim, a captura dos eventos do mouse se deu por ler as informações armazenadas pelo arquivo mice no diretório /dev/input/, onde cada evento relacionado ao dispositivo é armazenado em uma FIFO (First In, First Out). As informações dos eventos do mouse no arquivo são lidas de forma não bloqueante, ou seja, o fluxo do jogo não é interrompido quando nenhum movimento do mouse é detectado.
+  
+A implementação de código que utilize os movimentos de um mouse conectado a uma das portas USB 2.0 presentes na DE1-SoC foi, também, um dos requisitos propostos do problema. Assim, a captura dos eventos do mouse se deu por ler as informações armazenadas pelo arquivo _mice_ no diretório /dev/input/, onde cada evento relacionado ao dispositivo é armazenado em uma _FIFO (First In, First Out)_. As informações dos eventos do mouse no arquivo são lidas de forma não bloqueante, ou seja, o fluxo do jogo não é interrompido quando nenhum movimento do mouse é detectado.
 
-De acordo com a documentação do GNU/Linux, cada evento é registrado em uma struct contendo variáveis que guardam informações como a data e hora do evento, tipo, código e valor. A struct de data/hora ocupa 16 bytes no espaço de memória, e as variáveis de tipo, código e valor ocupam 8 bytes juntas. Como apenas os três últimos dados foram relevantes para a implementação do mouse, apenas estes foram lidos.
+De acordo com a documentação do _GNU/Linux_, cada evento é registrado em uma struct contendo variáveis que guardam informações como a data e hora do evento, tipo, código e valor. A struct de data/hora ocupa 16 bytes no espaço de memória, e as variáveis de tipo, código e valor ocupam 8 bytes juntas. Como apenas os três últimos dados foram relevantes para a implementação do mouse, apenas estes foram lidos.
 
 A struct guarda o valor do deslocamento horizontal ou vertical em um espaço de tempo específico, e quais dos botões foram pressionados. Entretanto, os eventos não são simultâneos, sendo armazenados um de cada vez. Logo, em cada leitura do arquivo, algumas informações podem ser perdidas se não manuseadas de forma correta. Além disso, a posição atual do mouse também não é calculada, sendo apenas guardados o deslocamento dos eixos:
 
@@ -138,7 +139,7 @@ A struct guarda o valor do deslocamento horizontal ou vertical em um espaço de 
 
 Portanto, a implementação se deu da seguinte forma:
 
-- Para salvar as informações do mouse, uma struct dedicada foi implementada para registrar as informações do file descriptor do /dev/input/mice, um vetor auxiliar usado como buffer, deslocamento para o eixo x, deslocamento para o eixo y e pressionamento dos botões (quais dos botões foram pressionados, quais foram soltos e os seus estados anteriores, a fim de comparação). Os bytes são lidos com o auxílio das bibliotecas unistd e fcntl, e são manipulados dentro do próprio código.
+- Para salvar as informações do mouse, uma struct dedicada foi implementada para registrar as informações do file descriptor do /dev/input/mice, um vetor auxiliar usado como buffer, deslocamento para o eixo x, deslocamento para o eixo y e pressionamento dos botões (quais dos botões foram pressionados, quais foram soltos e os seus estados anteriores, a fim de comparação). Os bytes são lidos e são manipulados dentro do próprio código.
 - Também foi criada uma struct para armazenar as informações do cursor, como a posição x e y e o caractere usado para representar o cursor. É importante salientar que o mouse e o cursor são elementos distintos – o mouse é o dispositivo físico, enquanto o cursor é a sua representação gráfica na tela.
 - Primeiro, o cursor é inicializado no centro da tela. Em seguida, o seu movimento é calculado somando a posição horizontal do mouse com o seu deslocamento horizontal e subtraindo a posição vertical pelo deslocamento vertical, porque o eixo vertical do terminal é invertido em relação ao eixo do deslocamento y do mouse.
 - Foram criadas duas matrizes: uma para guardar o caractere que o cursor estaria sobrepondo e outra para sua cor, para que fosse possível colocar o caractere na sua posição antiga onde o cursor estava sobrepondo. Após isso, o cursor é posto em sua posição atualizada, eliminando assim a necessidade de imprimir o tabuleiro inteiro a cada movimento do mouse. Sem essas matrizes, o rastro do cursor permaneceria na tela, dificultando a visualização dos itens na tela.
@@ -147,7 +148,17 @@ Portanto, a implementação se deu da seguinte forma:
 <h2> Funcionamento do jogo </h2>
 <div align="justify">
 
-Funcionamento
+O jogo funciona da seguinte maneira:
+
+- Primeiro, o menu principal é mostrado com o título do jogo. Pressione o botão esquerdo do mouse para jogar ou o botão direito para encerrar a execução do programa.
+- Os cliques do mouse são registrados apenas quando ele é solto. Isso é feito comparando os valores atuais dos botões do mouse com o seu estado passado. Se o mouse foi pressionado em seu estado passado e não está mais sendo pressionado em seu estado atual, o clique é registrado. Como os eventos do mouse não são registrados de forma simultânea, ou seja, cada movimento do mouse é registrado de forma independente quando são lidos, as informações sobre os botões do mouse só são lidas se o tipo de evento não for relacionado ao seu deslocamento. Caso contrário, o evento é mantido.
+- Ao iniciar o jogo, o tabuleiro é mostrado. O cursor deve estar em cima do quadrante a ser jogado e o mouse deve ser clicado para registrar a jogada.
+- Durante o jogo, as regras do _Tic-Tac-Toe_ são aplicadas. A cada iteração, o jogo checa se há uma combinação de três X ou O na vertical, horizontal ou diagonal, e elege um vencedor em caso positivo. A coluna, linha ou diagonal vencedora é ressaltada e os caracteres passam a piscar.
+- Se todos os quadrantes foram preenchidos e nenhum dos jogadores conseguiu posicionar três em sequência, a partida termina em empate.
+- Para continuar após o término da partida, é necessário que o clique esquerdo seja detectado. Assim, o jogo retornará ao menu principal.
+- Qualquer um dos dois jogadores pode renunciar durante a partida, sendo necessário apenas registrar um clique com o botão direito. A vitória é automaticamente concedida ao outro jogador.
+
+O funcionamento do jogo será exemplificado na seção subsequente como testes.
 
 
 <div id="test"> 
@@ -212,19 +223,21 @@ Esta sessão é reservada para demonstração dos testes feitos no projeto.
 <h2> Resultados alcançados</h2>
 <div align="justify">
 
-Resultados
+O jogo da velha foi implementado com sucesso, oferecendo uma experiência de jogo completa e satisfatória para o usuário. Os jogadores podem alternar entre os símbolos "X" e "O", realizar movimentos válidos e detectar automaticamente quando ocorre uma vitória ou empate. Além disso, a implementação visual do cursor trouxe grandes benefícios para a experiência do utilizador, permitindo que os jogadores selecionem facilmente as células do tabuleiro onde desejavam fazer suas jogadas de forma interativa.
+
+Durante o processo de desenvolvimento, entretanto, alguns desafios foram encontrados, principalmente em relação à implementação do controle do cursor. O requisito original solicitava uma abstração em baixo nível para o funcionamento do mouse, porém, as bibliotecas _unistd_ e _fcntl_ foram utilizadas. Embora não estivessem inicialmente dentro do escopo do projeto, elas foram essenciais para contornar as limitações e garantir o funcionamento adequado do cursor, e através delas, o código obtém acesso aos eventos de movimento do mouse e é capaz de atualizar de maneira adequada a localização do cursor no terminal.
 
 <div id="conclusion"> 
 <h2> Conclusão</h2>
 <div align="justify">
 
-Conclusão
+Conclui-se que o projeto foi implementado de forma satisfatória. Mesmo ao lidar com o desafio da implementação do mouse de uma maneira não planejada inicialmente para o projeto, o jogo se mostrou funcional e atendeu a outros requisitos propostos. Ademais, foi essencial para expandir o conhecimento acerca do kit de desenvolvimento, _GNU/Linux_ embarcado e a comunicação _hardware/software_, contribuindo para a sofisticação de projetos futuros a serem implementados no kit de desenvolvimento DE1-SoC.
 
 <div id="makefile"> 
 <h2> Instruções para executar o programa</h2>
 <div align="justify">
 
-Abrindo o diretório /game no terminal em um ambiente GNU/Linux, preferencialmente no kit de desenvolvimento DE1-SoC, execute as instruções:
+Para executar o jogo, após baixar e extrair o arquivo do jogo, abrindo o diretório /game/ no terminal em um ambiente _GNU/Linux_, preferencialmente em conexão remota com o kit de desenvolvimento DE1-SoC, execute as instruções:
 
 ```
 make
@@ -243,6 +256,6 @@ Introduction to the ARM Cortex-A9 Processor. Disponível em: https://github.com/
 
 Linux Input drivers v1.0. Disponível em: https://www.kernel.org/doc/Documentation/input/input.txt.
 
-WEISSTEIN, Eric W. Tic-tac-toe. https://mathworld. wolfram. com/, 2002.
+WEISSTEIN, Eric W. Tic-tac-toe. https://mathworld.wolfram.com/, 2002.
 
 
